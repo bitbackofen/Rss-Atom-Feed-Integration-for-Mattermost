@@ -4,9 +4,11 @@ __author__ = 'Markus'
 
 
 class RssFeed:
-    def __init__(self, name, url, lasttitle, newtitle, articleurl):
+    def __init__(self, name, url, user, channel):
         self.name = name
         self.url = url
-        self.lasttitle = lasttitle
-        self.newtitle = newtitle
-        self.articleurl = articleurl
+        self.user = user
+        self.channel = channel
+        self.lasttitle = ''
+        self.newtitle = ''
+        self.articleurl = ''
