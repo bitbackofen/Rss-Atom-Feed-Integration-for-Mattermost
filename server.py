@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-__author__ = 'elpatron'
+__author__ = 'elpatron@mailbox.org'
 # derived from https://github.com/mattermost/mattermost-integration-gitlab
 
 import requests
@@ -12,12 +12,13 @@ from rssfeed import RssFeed
 
 mattermost_webhook_url = 'https://192.168.0.238/hooks/cns14rjjfpfrxpgoujxpm7sy3w'  # Paste the Mattermost webhook URL you created here
 mattermost_channel = 'testing'  # Leave this blank to post to the default channel of your webhook
+delay_between_pulls = 60 * 5
 
 # Your feeds come here:
-# RssFeed('Feed name', 'Feed URL', 'Mattermost username', 'Mattermost channel', Title, Description, Url)
-# Title, Description, Url can be True or False; at least one of them should be True
-feeds = {RssFeed('Heise News', 'http://heise.de.feedsportal.com/c/35207/f/653902/index.rss', 'RSS-Bot', 'testing', True, True, True),
-         RssFeed('t3n', 'https://feeds2.feedburner.com/aktuell/feeds/rss/', 'RSS-Bot', 'testing', True, False, True)
+# RssFeed('Feed name', 'Feed URL', 'Mattermost username', 'Mattermost channel', show name, show title, show description, show url)
+# show name, show title, show description, show url can be True or False; at least one of them should be True
+feeds = {RssFeed('Heise News', 'http://heise.de.feedsportal.com/c/35207/f/653902/index.rss', 'RSS-Bot', 'testing', True, True, True, True),
+         RssFeed('t3n', 'https://feeds2.feedburner.com/aktuell/feeds/rss/', 'RSS-Bot', 'testing', True, True, False, True)
          }
 
 
@@ -60,6 +61,4 @@ if __name__ == "__main__":
             else:
                 print('Nothing new. Waiting for good news...')
 
-        time.sleep(60)
-
-
+        time.sleep(delay_between_pulls)
