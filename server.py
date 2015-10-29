@@ -26,15 +26,14 @@ delay_between_pulls = 60 * 5
 # show name, show title, show description, show url can be True or False; at least one of them should be True
 # show description (longer text or full article) seems not to work with every feed.
 # Set to False it if a feed doesnt´t work.
-feeds = {RssFeed('Heise News', 'http://heise.de.feedsportal.com/c/35207/f/653902/index.rss', 'RSS-Bot', 'testing',
+feeds = (RssFeed('Heise News', 'http://heise.de.feedsportal.com/c/35207/f/653902/index.rss', 'RSS-Bot', 'testing',
                  True, True, True, True),
          RssFeed('t3n', 'https://feeds2.feedburner.com/aktuell/feeds/rss/', 'RSS-Bot', 'testing',
                  True, True, False, True),
          RssFeed('Toms Hardware', 'http://www.tomshardware.com/articles.xml', 'RSS-Bot', 'testing',
                  True, True, True, True),
          RssFeed('Mattermost Forum', 'http://forum.mattermost.org/latest.rss', 'RSS-Bot', 'testing',
-                 True, True, True, True)
-         }
+                 True, True, True, True))
 
 
 def post_text(text, username, channel):
