@@ -7,15 +7,17 @@ import requests
 import json
 import feedparser
 import time
+import sys
 from rssfeed import RssFeed
 
 mattermost_webhook_url = 'https://192.168.0.238/hooks/cns14rjjfpfrxpgoujxpm7sy3w'  # Paste the Mattermost webhook URL you created here
 mattermost_channel = 'testing'  # Leave this blank to post to the default channel of your webhook
 
 # Your feeds come here:
-# RssFeed('Feed name', 'Feed URL', 'Mattermost username', 'Mattermost channel')
-feeds = {RssFeed('Heise News', 'http://heise.de.feedsportal.com/c/35207/f/653902/index.rss', 'RSS-Bot', 'testing'),
-         RssFeed('t3n', 'https://feeds2.feedburner.com/aktuell/feeds/rss/', 'RSS-Bot', 'testing')
+# RssFeed('Feed name', 'Feed URL', 'Mattermost username', 'Mattermost channel', Title, Description, Url)
+# Title, Description, Url can be True or False; at least one of them should be True
+feeds = {RssFeed('Heise News', 'http://heise.de.feedsportal.com/c/35207/f/653902/index.rss', 'RSS-Bot', 'testing', True, True, True),
+         RssFeed('t3n', 'https://feeds2.feedburner.com/aktuell/feeds/rss/', 'RSS-Bot', 'testing', True, False, True)
          }
 
 
@@ -23,7 +25,6 @@ def post_text(text, username, channel):
     """
     Mattermost POST method, posts text to the Mattermost incoming webhook URL
     """
-
     data = {}
     data['text'] = text
     if len(username) > 0:
@@ -40,23 +41,22 @@ def post_text(text, username, channel):
 
 if __name__ == "__main__":
     if len(mattermost_webhook_url) == 0:
-        print('MATTERMOST_WEBHOOK_URL must be configured. Please see instructions in README.md')
+        print('mattermost_webhook_url must be configured. Please see instructions in README.md')
         sys.exit()
 
     while 1:
         for feed in feeds:
-            d = feedparser.parse(feed.url)
-            feed.newtitle = d['entries'][0]['title']
-            feed.articleurl = d['entries'][0]['link']
-
-            if feed.lasttitle != feed.newtitle:
-                print(feed.url)
-                print('Title: ' + feed.newtitle + '\n')
-                print('Link: ' + feed.articleurl + '\n')
-                # description = d['entries'][0]['content'][0]
-                feedtext = feed.name + ': ' + feed.newtitle + ' (' + feed.articleurl + ')'
-                post_text(feedtext, feed.user, feed.channel)
-                feed.lasttitle = feed.newtitle
+            d = feedparser.parse(feed.Url)
+            feed.NewTitle = d['entries'][0]['title']
+            feed.ArticleUrl = d['entries'][0]['link']
+            feed.Description = d['entries'][0]['description']
+            if feed.LastTitle != feed.NewTitle:
+                # print(feed.Url)
+                # print('Title: ' + feed.NewTitle + '\n')
+                # print('Link: ' + feed.ArticleUrl + '\n')
+                print(feed.jointext())
+                post_text(feed.jointext(), feed.User, feed.Channel)
+                feed.LastTitle = feed.NewTitle
             else:
                 print('Nothing new. Waiting for good news...')
 
