@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 __author__ = 'elpatron@mailbox.org'
-# derived from https://github.com/mattermost/mattermost-integration-gitlab
+# Derived from https://github.com/mattermost/mattermost-integration-gitlab
 
 import requests
 import json
@@ -12,6 +12,7 @@ import logging
 from rssfeed import RssFeed
 
 # Paste the Mattermost webhook URL you created here
+# See also: https://github.com/mattermost/platform/blob/master/doc/integrations/webhooks/Incoming-Webhooks.md
 mattermost_webhook_url = 'https://192.168.0.238/hooks/cns14rjjfpfrxpgoujxpm7sy3w'
 # Leave this blank to post to the default channel of your webhook
 mattermost_channel = 'testing'
@@ -29,7 +30,9 @@ feeds = {RssFeed('Heise News', 'http://heise.de.feedsportal.com/c/35207/f/653902
                  True, True, True, True),
          RssFeed('t3n', 'https://feeds2.feedburner.com/aktuell/feeds/rss/', 'RSS-Bot', 'testing',
                  True, True, False, True),
-         RssFeed('Toms', 'http://www.tomshardware.com/articles.xml', 'RSS-Bot', 'testing',
+         RssFeed('Toms Hardware', 'http://www.tomshardware.com/articles.xml', 'RSS-Bot', 'testing',
+                 True, True, True, True),
+         RssFeed('Mattermost Forum', 'http://forum.mattermost.org/latest.rss', 'RSS-Bot', 'testing',
                  True, True, True, True)
          }
 
@@ -73,6 +76,6 @@ if __name__ == "__main__":
                 post_text(feed.jointext(), feed.User, feed.Channel)
                 feed.LastTitle = feed.NewTitle
             else:
-                print('Nothing new. Waiting for good news...')
+                logging.debug('Nothing new. Waiting for good news...')
 
         time.sleep(delay_between_pulls)
