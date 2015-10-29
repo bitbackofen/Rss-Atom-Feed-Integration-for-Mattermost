@@ -18,6 +18,8 @@ mattermost_webhook_url = 'https://192.168.0.238/hooks/cns14rjjfpfrxpgoujxpm7sy3w
 mattermost_channel = 'testing'
 # Set the delay between feed pulls to your needs. 5 minutes should be okay.
 delay_between_pulls = 60 * 5
+# Trust only signed SSL certificate?
+verify_cert = False
 
 # Your feeds come here:
 # RssFeed('Feed name', 'Feed URL', 'Mattermost username', 'Mattermost channel',
@@ -48,11 +50,11 @@ def post_text(text, username, channel):
         data['channel'] = channel
 
     headers = {'Content-Type': 'application/json'}
-    r = requests.post(mattermost_webhook_url, headers=headers, data=json.dumps(data), verify=False)
+    r = requests.post(mattermost_webhook_url, headers=headers, data=json.dumps(data), verify=verify_cert)
 
     if r.status_code is not requests.codes.ok:
-        logging.debug('Encountered error posting to Mattermost URL %s, status=%d, response_body=%s' % (mattermost_webhook_url,
-                                                                                               r.status_code, r.json()))
+        logging.debug('Encountered error posting to Mattermost URL %s, status=%d, response_body=%s' %
+                      (mattermost_webhook_url, r.status_code, r.json()))
 
 
 if __name__ == "__main__":
