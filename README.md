@@ -59,7 +59,7 @@ Here's how to start:
     `python ./feedfetcher.py stop` 
 2. Update mattermost_integration_rss  
     `git pull origin master`
-3. Have a look at `settings.py_sample` for changes.
+3. Have a look at `settings.py.sample` for changes.
 4. Start the feedfetcher:  
     `python ./feedfetcher.py start` 
     
