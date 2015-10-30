@@ -43,7 +43,7 @@ Here's how to start:
     8. Edit `settings.py` to suit your requirements:  
         `nano settings.py`  
         Save your changes (F2) and exit nano (CRTL-X)
-    9. Test the server:  
+    9. Test the the feed fetcher:  
         `python ./feedfetcher.py start`  
         You should see your feeds scrolling through. Check your configured Mattermost channel for the new feeds.  
         If everything works fine:
