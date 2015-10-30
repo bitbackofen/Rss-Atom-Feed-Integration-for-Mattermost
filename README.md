@@ -46,13 +46,14 @@ Here's how to start:
     - `nano settings.py`
     Save your changes (F2) and exit nano (CRTL-X)
  7. Test the server:
-    - `python feedfetcher.py start`
-    You should see your feeds scrolling up. Check your configured Mattermost channel for the new feeds. 
+    - `python ./feedfetcher.py start`
+    You should see your feeds scrolling through. Check your configured Mattermost channel for the new feeds. 
     If everything works fine:
  8. Start feedfetcher as daemon:
     - `crontab -e`
     - Scroll down an add 1 line:
-    - `@reboot  python /path-to-mattermost_integration_rss/feedfetcher.py start
+    - `@reboot  python /path-to-mattermost_integration_rss/feedfetcher.py start`
+    
     
     
 
