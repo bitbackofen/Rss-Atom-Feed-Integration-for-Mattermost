@@ -7,7 +7,7 @@ via [Mattermost's incoming webhooks](https://github.com/mattermost/platform/blob
 
 To run this integration you need:
 
-1. A **network connected device running python** like Raspberry Pi, any Linux device or a Windows PC  
+1. A **network connected device running python** like Raspberry Pi or any other Linux device wich support python and the required packages  
 2. A **[Mattermost account](http://www.mattermost.org/)** where [incoming webhooks are enabled](https://github.com/mattermost/platform/blob/master/doc/integrations/webhooks/Incoming-Webhooks.md#enabling-incoming-webhooks)
 
 ### Linux/Ubuntu 14.04 Install
@@ -46,9 +46,13 @@ Here's how to start:
     - `nano settings.py`
     Save your changes (F2) and exit nano (CRTL-X)
  7. Test the server:
-    - `python feedfetcher.py`
+    - `python feedfetcher.py start`
     You should see your feeds scrolling up. Check your configured Mattermost channel for the new feeds. 
     If everything works fine:
- 8. Start `feedfetcher.py` as nohup:
+ 8. Start feedfetcher as daemon:
+    - `crontab -e`
+    - Scroll down an add 1 line:
+    - `@reboot  python /path-to-mattermost_integration_rss/feedfetcher.py start
+    
     
 
