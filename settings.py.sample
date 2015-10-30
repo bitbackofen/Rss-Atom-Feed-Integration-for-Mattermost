@@ -1,0 +1,32 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+__author__ = 'markus'
+
+from rssfeed import RssFeed
+
+# Paste the Mattermost webhook URL you created here
+# See also: https://github.com/mattermost/platform/blob/master/doc/integrations/webhooks/Incoming-Webhooks.md
+mattermost_webhook_url = 'https://<your-mattermost-webhook-URL>'
+# Leave this blank to post to the default channel of your webhook
+mattermost_channel = 'testing'
+# Set the delay between feed pulls to your needs. 5 minutes should be okay.
+delay_between_pulls = 60 * 5
+# Trust only signed SSL certificate?
+verify_cert = False
+
+# Your feeds come here:
+# RssFeed('Feed name', 'Feed URL', 'Mattermost username', 'Mattermost channel',
+# show name, show title, show description, show url)
+#
+# show name, show title, show description, show url can be True or False; at least one of them should be True
+# show description (longer text or full article) seems not to work with every feed.
+# Set to False it if a feed doesnt´t work.
+feeds = (RssFeed('Heise News', 'http://heise.de.feedsportal.com/c/35207/f/653902/index.rss', 'RSS-Bot', 'testing',
+                 True, True, True, True),
+         RssFeed('t3n', 'https://feeds2.feedburner.com/aktuell/feeds/rss/', 'RSS-Bot', 'testing',
+                 True, True, False, True),
+         RssFeed('Toms Hardware', 'http://www.tomshardware.com/articles.xml', 'RSS-Bot', 'testing',
+                 True, True, True, True),
+         RssFeed('Mattermost Forum', 'http://forum.mattermost.org/latest.rss', 'RSS-Bot', 'testing',
+                 True, True, True, True))
+
