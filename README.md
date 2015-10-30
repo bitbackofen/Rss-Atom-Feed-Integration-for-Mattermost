@@ -51,3 +51,15 @@ Here's how to start:
         `crontab -e`  
         Scroll down an add 1 line:  
         `@reboot  python /path-to-mattermost_integration_rss/feedfetcher.py start`
+        
+### Linux/Ubuntu 14.04 Update
+1. cd into your mattermost_integration_rss directory:  
+    `cd /path/to/mattermost_integration_rss`
+2. Stop feedfetcher:  
+    `python ./feedfetcher.py stop` 
+2. Update mattermost_integration_rss  
+    `git pull origin master`
+3. Have a look at `settings.py_sample` for changes.
+4. Start the feedfetcher:  
+    `python ./feedfetcher.py start` 
+    
