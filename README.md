@@ -44,11 +44,11 @@ Here's how to start:
     - `cp settings.py.sample settings.py`
  8. Edit `settings.py` to suit your requirements:
     - `nano settings.py`
-    Save your changes (F2) and exit nano (CRTL-X)
+    - Save your changes (F2) and exit nano (CRTL-X)
  7. Test the server:
     - `python ./feedfetcher.py start`
-    You should see your feeds scrolling through. Check your configured Mattermost channel for the new feeds. 
-    If everything works fine:
+    - You should see your feeds scrolling through. Check your configured Mattermost channel for the new feeds. 
+    - If everything works fine:
  8. Start feedfetcher as daemon:
     - `crontab -e`
     - Scroll down an add 1 line:
