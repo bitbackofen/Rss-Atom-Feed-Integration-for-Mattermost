@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-__author__ = 'Markus'
+__author__ = 'elpatron@mailbox.org'
 
 import html2text
 
