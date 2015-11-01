@@ -32,7 +32,7 @@ Here's how to start:
     3. Confirm **Python 2.7** or a compatible version is installed by running:  
         `python --version` If it's not installed you can find it [here](https://www.python.org/downloads/)
     4. Install **pip** and **git**:  
-        `sudo apt-get install python-pip git`
+        `sudo apt-get install python-pip supervisor git`
     5. Clone this GitHub repo:  
         `git clone https://gitlab.com/m-busche/mattermost_integration_rss.git`  
         `cd mattermost_integration_rss`
@@ -47,8 +47,24 @@ Here's how to start:
         `python ./feedfetcher.py`  
         You should see your feeds scrolling through. Check your configured Mattermost channel for the new feeds.  
         If everything works fine:
-    10. Start feedfetcher with nuhup:    
-        `nohup python ./feedfetcher.py &`
+    10. a) Start feedfetcher with nuhup:    
+        `nohup python ./feedfetcher.py &`  
+        b) Alternatively: Start feedfetcher with Supervisor:  
+          - `chmod +x feedfetcher.py`  
+          - `sudo nano /etc/supervisor/conf.d/mattermost_integration_rss.conf`  
+          - Paste this into nano and change path in `command`   
+            <code>[program:mattermost_integration_rss]
+            command=/path/to/mattermost_integration_rss/feedfetcher.py  
+            autostart=true  
+            autorestart=true  
+            stderr_logfile=/var/log/mattermost_intergration_rss.err.log  
+            stdout_logfile=/var/log/mattermost_intergration_rss.out.log</code>
+          - Tell Supervisor to look for any new or changed program configurations:  
+          `sudo supervisorctl reread`
+          - Followed by telling it to enact any changes with:  
+          `sudo supervisorctl update`  
+        Refer to [this tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-and-manage-supervisor-on-ubuntu-and-debian-vps)
+        for more information about Supervisor.  
         
 ### Linux/Ubuntu 14.04 Update
 1. cd into your mattermost_integration_rss directory:  
