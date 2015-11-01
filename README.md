@@ -31,8 +31,8 @@ Here's how to start:
     2. **SSH** into the machine, or just open your terminal if you're installing locally.
     3. Confirm **Python 2.7** or a compatible version is installed by running:  
         `python --version` If it's not installed you can find it [here](https://www.python.org/downloads/)
-    4. Install **pip** and other essentials:  
-        `sudo apt-get install python-pip python-dev build-essential`
+    4. Install **pip** and **git**:  
+        `sudo apt-get install python-pip git`
     5. Clone this GitHub repo:  
         `git clone https://gitlab.com/m-busche/mattermost_integration_rss.git`  
         `cd mattermost-integration-rss`
