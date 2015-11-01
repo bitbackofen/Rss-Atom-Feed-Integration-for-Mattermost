@@ -35,7 +35,7 @@ Here's how to start:
         `sudo apt-get install python-pip git`
     5. Clone this GitHub repo:  
         `git clone https://gitlab.com/m-busche/mattermost_integration_rss.git`  
-        `cd mattermost-integration-rss`
+        `cd mattermost_integration_rss`
     6. Install integration requirements:  
         `sudo pip install -r requirements.txt`
     7. Copy sample file `settings.py.sample`:  
