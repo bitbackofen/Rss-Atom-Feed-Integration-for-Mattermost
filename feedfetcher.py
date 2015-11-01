@@ -29,19 +29,23 @@ class App:
 
         while 1:
             for feed in feeds:
-                d = feedparser.parse(feed.Url)
-                feed.NewTitle = d['entries'][0]['title']
-                feed.ArticleUrl = d['entries'][0]['link']
-                feed.Description = d['entries'][0]['description']
-                if feed.LastTitle != feed.NewTitle:
-                    logging.debug('Feed url: ' + feed.Url)
-                    logging.debug('Title: ' + feed.NewTitle + '\n')
-                    logging.debug('Link: ' + feed.ArticleUrl + '\n')
-                    logging.debug('Posted text: ' + feed.jointext())
-                    self.post_text(feed.jointext(), feed.User, feed.Channel)
-                    feed.LastTitle = feed.NewTitle
-                else:
-                    logging.debug('Nothing new. Waiting for good news...')
+                try:
+                    d = feedparser.parse(feed.Url)
+                    feed.NewTitle = d['entries'][0]['title']
+                    feed.ArticleUrl = d['entries'][0]['link']
+                    feed.Description = d['entries'][0]['description']
+                    if feed.LastTitle != feed.NewTitle:
+                        logging.debug('Feed url: ' + feed.Url)
+                        logging.debug('Title: ' + feed.NewTitle + '\n')
+                        logging.debug('Link: ' + feed.ArticleUrl + '\n')
+                        logging.debug('Posted text: ' + feed.jointext())
+                        self.post_text(feed.jointext(), feed.User, feed.Channel)
+                        feed.LastTitle = feed.NewTitle
+                    else:
+                        logging.debug('Nothing new. Waiting for good news...')
+                except:
+                    logging.CRITICAL('Error fetching feed.')
+                    continue
 
             time.sleep(delay_between_pulls)
 
