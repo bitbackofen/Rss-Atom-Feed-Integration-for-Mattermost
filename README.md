@@ -53,11 +53,11 @@ Here's how to start:
           - `chmod +x feedfetcher.py`  
           - `sudo nano /etc/supervisor/conf.d/mattermost_integration_rss.conf`  
           - Paste this into nano and change path in `command=`   
-            <code>[program:mattermost_integration_rss]  
-            command=/path/to/mattermost_integration_rss/feedfetcher.py    
-            autostart=true  
-            autorestart=true  
-            stderr_logfile=/var/log/mattermost_intergration_rss.err.log  
+            <code>[program:mattermost_integration_rss]
+            command=/path/to/mattermost_integration_rss/feedfetcher.py
+            autostart=true
+            autorestart=true
+            stderr_logfile=/var/log/mattermost_intergration_rss.err.log
             stdout_logfile=/var/log/mattermost_intergration_rss.out.log</code>
           - Tell Supervisor to look for any new or changed program configurations:  
           `sudo supervisorctl reread`
@@ -75,5 +75,4 @@ Here's how to start:
     `git pull origin master`
 3. Have a look at `settings.py.sample` for changes.
 4. Start the feedfetcher:  
-    `python ./feedfetcher.py start` 
-    
+    `python ./feedfetcher.py start`
