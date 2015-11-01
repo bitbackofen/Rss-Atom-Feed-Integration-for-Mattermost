@@ -52,9 +52,9 @@ Here's how to start:
         b) Alternatively: Start feedfetcher with Supervisor:  
           - `chmod +x feedfetcher.py`  
           - `sudo nano /etc/supervisor/conf.d/mattermost_integration_rss.conf`  
-          - Paste this into nano and change path in `command`   
-            <code>[program:mattermost_integration_rss]
-            command=/path/to/mattermost_integration_rss/feedfetcher.py  
+          - Paste this into nano and change path in `command=`   
+            <code>[program:mattermost_integration_rss]  
+            command=/path/to/mattermost_integration_rss/feedfetcher.py    
             autostart=true  
             autorestart=true  
             stderr_logfile=/var/log/mattermost_intergration_rss.err.log  
