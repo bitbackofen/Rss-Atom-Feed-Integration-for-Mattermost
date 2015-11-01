@@ -32,7 +32,7 @@ Here's how to start:
     3. Confirm **Python 2.7** or a compatible version is installed by running:  
         `python --version` If it's not installed you can find it [here](https://www.python.org/downloads/)
     4. Install **pip** and **git**:  
-        `sudo apt-get install python-pip python-daemon git`
+        `sudo apt-get install python-pip git`
     5. Clone this GitHub repo:  
         `git clone https://gitlab.com/m-busche/mattermost_integration_rss.git`  
         `cd mattermost_integration_rss`
@@ -44,13 +44,11 @@ Here's how to start:
         `nano settings.py`  
         Save your changes (F2) and exit nano (CRTL-X)
     9. Test the the feed fetcher:  
-        `python ./feedfetcher.py start`  
+        `python ./feedfetcher.py`  
         You should see your feeds scrolling through. Check your configured Mattermost channel for the new feeds.  
         If everything works fine:
-    10. Start feedfetcher as daemon:  
-        `crontab -e`  
-        Scroll down an add 1 line:  
-        `@reboot  python /path-to-mattermost_integration_rss/feedfetcher.py start`
+    10. Start feedfetcher with nuhup:    
+        `nohup python ./feedfetcher.py &`
         
 ### Linux/Ubuntu 14.04 Update
 1. cd into your mattermost_integration_rss directory:  
