@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 __author__ = 'elpatron@mailbox.org'
 
+import sys
 try:
     import html2text
 except ImportError as exc:
