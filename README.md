@@ -36,30 +36,29 @@ Here's how to start:
     5. Clone this GitHub repo:  
         `git clone https://gitlab.com/m-busche/mattermost_integration_rss.git`  
         `cd mattermost_integration_rss`
-    6. Install integration requirements:  
-        `sudo pip install -r requirements.txt`
-    7. Copy sample file `settings.py.sample`:  
+    6. Copy sample file `settings.py.sample`:  
         `cp settings.py.sample settings.py`
-    8. Edit `settings.py` to suit your requirements:  
+    7. Edit `settings.py` to suit your requirements:  
         `nano settings.py`  
         Save your changes (F2) and exit nano (CRTL-X)
-    9. Setup virtual environment:  
+    8. Setup virtual environment:  
          `virtualenv -p python2 env`  
          `source env/bin/activate`  
          `(env) $ pip install -r requirements.txt`  
          Leave virtual environment:
          `(env) $ deactivate`  
-    10. Test the the feed fetcher:  
+    9. Test the the feed fetcher:  
         `./env/bin/python ./feedfetcher.py`  
         You should see your feeds scrolling through. Check your configured Mattermost channel for the new feeds.  
         If everything works fine:
-    11. a) Start feedfetcher with nuhup:    
+    10. a) Start feedfetcher with nuhup:    
         `nohup ./env/bin/python ./feedfetcher.py &`  
-        b) Alternatively: Start feedfetcher with Supervisor:    
+        b) Alternatively: Start feedfetcher with Supervisor:  
+          - `chmod +x startfeedfetcher.py`  
           - `sudo nano /etc/supervisor/conf.d/mattermost_integration_rss.conf`  
-          - Paste this into nano and change path in `command=`   
-            <code>[program:mattermost_integration_rss]
-            command=/path/to/mattermost_integration_rss/env/bin/python /path/to/mattermost_integration_rss/feedfetcher.py  
+          - Paste this into nano and change path in `command=` 
+            <code>[program:mattermost_integration_rss]  
+            command=/path/to/mattermost_integration_rss/startfeedfetcher.py  
             autostart=true  
             autorestart=true  
             stderr_logfile=/var/log/mattermost_intergration_rss.err.log  
