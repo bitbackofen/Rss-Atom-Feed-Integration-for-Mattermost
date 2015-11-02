@@ -12,7 +12,6 @@ import logging
 import settings
 
 mattermost_webhook_url = settings.mattermost_webhook_url
-mattermost_channel = settings.mattermost_channel
 delay_between_pulls = settings.delay_between_pulls
 verify_cert = settings.verify_cert
 feeds = settings.feeds

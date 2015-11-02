@@ -7,8 +7,6 @@ from rssfeed import RssFeed
 # Paste the Mattermost webhook URL you created here
 # See also: https://github.com/mattermost/platform/blob/master/doc/integrations/webhooks/Incoming-Webhooks.md
 mattermost_webhook_url = 'https://<your-mattermost-webhook-URL>'
-# Leave this blank to post to the default channel of your webhook
-mattermost_channel = 'testing'
 # Set the delay between feed pulls to your needs. 5 minutes should be okay.
 delay_between_pulls = 60 * 5
 # Trust only signed SSL certificate?
