@@ -43,22 +43,27 @@ Here's how to start:
     8. Edit `settings.py` to suit your requirements:  
         `nano settings.py`  
         Save your changes (F2) and exit nano (CRTL-X)
-    9. Test the the feed fetcher:  
-        `python ./feedfetcher.py`  
+    9. Setup virtual environment:  
+         `virtualenv -p python2 env`  
+         `source env/bin/activate`  
+         `(env) $ pip install -r requirements.txt`  
+         Leave virtual environment:
+         `(env) $ deactivate`  
+    10. Test the the feed fetcher:  
+        `./env/bin/python ./feedfetcher.py`  
         You should see your feeds scrolling through. Check your configured Mattermost channel for the new feeds.  
         If everything works fine:
-    10. a) Start feedfetcher with nuhup:    
-        `nohup python ./feedfetcher.py &`  
-        b) Alternatively: Start feedfetcher with Supervisor:  
-          - `chmod +x feedfetcher.py`  
+    11. a) Start feedfetcher with nuhup:    
+        `nohup ./env/bin/python ./feedfetcher.py &`  
+        b) Alternatively: Start feedfetcher with Supervisor:    
           - `sudo nano /etc/supervisor/conf.d/mattermost_integration_rss.conf`  
           - Paste this into nano and change path in `command=`   
             <code>[program:mattermost_integration_rss]
-            command=/path/to/mattermost_integration_rss/feedfetcher.py
-            autostart=true
-            autorestart=true
-            stderr_logfile=/var/log/mattermost_intergration_rss.err.log
-            stdout_logfile=/var/log/mattermost_intergration_rss.out.log</code>
+            command=/path/to/mattermost_integration_rss/env/bin/python /path/to/mattermost_integration_rss/feedfetcher.py  
+            autostart=true  
+            autorestart=true  
+            stderr_logfile=/var/log/mattermost_intergration_rss.err.log  
+            stdout_logfile=/var/log/mattermost_intergration_rss.out.log</code>  
           - Tell Supervisor to look for any new or changed program configurations:  
           `sudo supervisorctl reread`
           - Followed by telling it to enact any changes with:  
