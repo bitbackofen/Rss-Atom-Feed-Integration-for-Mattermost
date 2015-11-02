@@ -32,7 +32,7 @@ Here's how to start:
     3. Confirm **Python 2.7** or a compatible version is installed by running:  
         `python --version` If it's not installed you can find it [here](https://www.python.org/downloads/)
     4. Install **pip** and **git**:  
-        `sudo apt-get install python-pip supervisor git`
+        `sudo apt-get install python-pip supervisor git virtualenvwrapper`
     5. Clone this GitHub repo:  
         `git clone https://gitlab.com/m-busche/mattermost_integration_rss.git`  
         `cd mattermost_integration_rss`

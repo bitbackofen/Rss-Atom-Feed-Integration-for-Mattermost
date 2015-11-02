@@ -3,13 +3,18 @@
 __author__ = 'elpatron@mailbox.org'
 # Partially derived from https://github.com/mattermost/mattermost-integration-gitlab
 
-import requests
 import json
-import feedparser
 import time
 import sys
 import logging
 import settings
+try:
+    import feedparser
+    import requests
+except ImportError as exc:
+    raise ImportError('Error: failed to import module ({}). Install missing modules using '
+                      '"sudo pip install -r requirements.txt"'.format(exc))
+    sys.exit(0)
 
 mattermost_webhook_url = settings.mattermost_webhook_url
 delay_between_pulls = settings.delay_between_pulls

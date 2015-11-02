@@ -2,7 +2,13 @@
 # -*- coding: utf-8 -*-
 __author__ = 'elpatron@mailbox.org'
 
-import html2text
+try:
+    import html2text
+except ImportError as exc:
+    raise ImportError('Error: failed to import module ({}). Install missing modules using '
+                      '"sudo pip install -r requirements.txt"'.format(exc))
+    sys.exit(0)
+
 
 class RssFeed:
     def __init__(self, name, url, user, channel, showname, showtitle, showdescription, showurl):
