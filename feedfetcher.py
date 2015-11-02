@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 __author__ = 'elpatron@mailbox.org'
-# Derived from https://github.com/mattermost/mattermost-integration-gitlab
+# Partially derived from https://github.com/mattermost/mattermost-integration-gitlab
 
 import requests
 import json

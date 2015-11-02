@@ -1,4 +1,4 @@
-# GitLab Integration Service for RSS-feeds
+# RSS- and Atom-Feed Integration Service for Mattermost
 
 This integration service posts RSS feeds into specific Mattermost channels by formatting output from html to text 
 via [Mattermost's incoming webhooks](https://github.com/mattermost/platform/blob/master/doc/integrations/webhooks/Incoming-Webhooks.md).
@@ -65,7 +65,17 @@ Here's how to start:
           `sudo supervisorctl update`  
         Refer to [this tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-and-manage-supervisor-on-ubuntu-and-debian-vps)
         for more information about Supervisor.  
-        
+
+### Microsoft Windows Install
+This integration also works with Microsoft Windows:  
+- Download Python 2.7 from [Python.org](https://www.python.org/downloads/) and install it  
+- Download mattermost_integration_rss from [Gitlab](https://gitlab.com/m-busche/mattermost_integration_rss/repository/archive.zip) or get it using `git clone https://gitlab.com/m-busche/mattermost_integration_rss.git`  
+- Extract the archive to a directory of your choice if you downloaded archive.zip.  
+- Start a command prompt and cd into your Python installation directory: e.g. `cd c:\python27`  
+- Install requirements using `Scripts\pip.exe install -r \path\to\mattermost_integration_rss\requirements.txt`  
+- `cd \path\to\mattermost_integration_rss\`  
+- Start the Script by typing `C:\Python27\python.exe feedfetcher.py` (change `C:\Python27\` if you installed Python elsewhere).  
+
 ### Linux/Ubuntu 14.04 Update
 1. cd into your mattermost_integration_rss directory:  
     `cd /path/to/mattermost_integration_rss`
