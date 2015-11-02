@@ -60,7 +60,7 @@ Here's how to start:
           - Tell Supervisor to look for any new or changed program configurations:  
           `sudo supervisorctl reread`
           - Followed by telling it to enact any changes with:  
-          `sudo supervisorctl update`
+          `sudo supervisorctl update`  
         Refer to [this tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-and-manage-supervisor-on-ubuntu-and-debian-vps)
         for more information about Supervisor.  
 
