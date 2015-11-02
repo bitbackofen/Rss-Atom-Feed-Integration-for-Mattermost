@@ -54,19 +54,13 @@ Here's how to start:
     10. a) Start feedfetcher with nuhup:    
         `nohup ./env/bin/python ./feedfetcher.py &`  
         b) Alternatively: Start feedfetcher with Supervisor:  
-          - `chmod +x startfeedfetcher_ve.sh`  
-          - `sudo nano /etc/supervisor/conf.d/mattermost_integration_rss.conf`  
-          - Paste this into nano and change path in `command=` 
-            <code>[program:mattermost_integration_rss]  
-            command=/path/to/mattermost_integration_rss/startfeedfetcher_ve.sh  
-            autostart=true  
-            autorestart=true  
-            stderr_logfile=/var/log/mattermost_intergration_rss.err.log  
-            stdout_logfile=/var/log/mattermost_intergration_rss.out.log</code>  
+          - `sudo cp mattermost_integration_rss.conf.sample /etc/supervisor/conf.d/mattermost_integration_rss.conf`  
+          - Edit the supervisor configuration file: `sudo nano /etc/supervisor/conf.d/mattermost_integration_rss.conf`
+          and change paths in `command=` and `directory=` to suit your environment.  
           - Tell Supervisor to look for any new or changed program configurations:  
           `sudo supervisorctl reread`
           - Followed by telling it to enact any changes with:  
-          `sudo supervisorctl update`  
+          `sudo supervisorctl update`
         Refer to [this tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-and-manage-supervisor-on-ubuntu-and-debian-vps)
         for more information about Supervisor.  
 
