@@ -16,6 +16,7 @@ delay_between_pulls = settings.delay_between_pulls
 verify_cert = settings.verify_cert
 feeds = settings.feeds
 
+
 def post_text(text, username, channel):
     """
     Mattermost POST method, posts text to the Mattermost incoming webhook URL
