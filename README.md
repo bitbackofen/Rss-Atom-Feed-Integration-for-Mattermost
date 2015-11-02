@@ -10,7 +10,7 @@ To run this integration you need:
 1. A **network connected device running python** like Raspberry Pi or any other Linux device which supports python and the required packages
 2. A **[Mattermost account](http://www.mattermost.org/)** where [incoming webhooks are enabled](https://github.com/mattermost/platform/blob/master/doc/integrations/webhooks/Incoming-Webhooks.md#enabling-incoming-webhooks)
 
-### Linux/Ubuntu 14.04 Install
+## Linux/Ubuntu 14.04 Install
 
 The following procedure shows how to install this project on a Linux device running Ubuntu 14.04. 
 The following instructions work behind a firewall as long as the device has access to your Mattermost instance. 
@@ -66,7 +66,7 @@ Here's how to start:
         Refer to [this tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-and-manage-supervisor-on-ubuntu-and-debian-vps)
         for more information about Supervisor.  
 
-### Microsoft Windows Install
+## Microsoft Windows Install
 This integration also works with Microsoft Windows:  
 - Download Python 2.7 from [Python.org](https://www.python.org/downloads/) and install it  
 - Download mattermost_integration_rss from [Gitlab](https://gitlab.com/m-busche/mattermost_integration_rss/repository/archive.zip) or get it using `git clone https://gitlab.com/m-busche/mattermost_integration_rss.git`  
@@ -77,7 +77,7 @@ This integration also works with Microsoft Windows:
 - Start the Script:  
   `C:\Python27\python.exe feedfetcher.py` (change `C:\Python27\` if you installed Python elsewhere).  
 
-### Linux/Ubuntu 14.04 Update
+## Linux/Ubuntu 14.04 Update
 1. cd into your mattermost_integration_rss directory:  
     `cd /path/to/mattermost_integration_rss`
 2. Stop feedfetcher:  
