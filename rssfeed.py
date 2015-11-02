@@ -5,7 +5,7 @@ __author__ = 'elpatron@mailbox.org'
 try:
     import html2text
 except ImportError as exc:
-    raise ImportError('Error: failed to import module ({}). Install missing modules using '
+    print('Error: failed to import module. ({}). Install missing modules using '
                       '"sudo pip install -r requirements.txt"'.format(exc))
     sys.exit(0)
 
