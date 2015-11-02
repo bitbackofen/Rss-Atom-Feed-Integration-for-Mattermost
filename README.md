@@ -74,7 +74,8 @@ This integration also works with Microsoft Windows:
 - Start a command prompt and cd into your Python installation directory: e.g. `cd c:\python27`  
 - Install requirements using `Scripts\pip.exe install -r \path\to\mattermost_integration_rss\requirements.txt`  
 - `cd \path\to\mattermost_integration_rss\`  
-- Start the Script by typing `C:\Python27\python.exe feedfetcher.py` (change `C:\Python27\` if you installed Python elsewhere).  
+- Start the Script:  
+  `C:\Python27\python.exe feedfetcher.py` (change `C:\Python27\` if you installed Python elsewhere).  
 
 ### Linux/Ubuntu 14.04 Update
 1. cd into your mattermost_integration_rss directory:  
