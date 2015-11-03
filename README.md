@@ -23,7 +23,7 @@ Here's how to start:
 1. **Set up your Mattermost instance to receive incoming webhooks**
     1. Log in to your Mattermost account. Click the three dot menu at the top of the left-hand side and go to  
         **Account Settings** > **Integrations** > **Incoming Webhooks**.
-    2. Under **Add a new incoming webhook** select the channel in which you want GitLab notifications to appear, then click **Add** to create a new entry.
+    2. Under **Add a new incoming webhook** select the channel in which you want Feed notifications to appear, then click **Add** to create a new entry.
     3. Copy the contents next to **URL** of the new webhook you just created (we'll refer to this as `https://<your-mattermost-webhook-URL>`).
 
 2. **Set up this project to run on your Linux device**
@@ -67,7 +67,7 @@ Here's how to start:
 ## Microsoft Windows Install
 This integration also works with Microsoft Windows:  
 - Download Python 2.7 from [Python.org](https://www.python.org/downloads/) and install it  
-- Download mattermost_integration_rss from [Github](https://github.com/bitbackofen/mattermost_integration_rss/archive/master.zip) or get it using `git clone https://gitlab.com/m-busche/mattermost_integration_rss.git`  
+- Download mattermost_integration_rss from [Github](https://github.com/bitbackofen/mattermost_integration_rss/archive/master.zip) or get it using `git clone https://github.com/bitbackofen/mattermost_integration_rss.git`  
 - Extract the archive to a directory of your choice if you downloaded archive.zip.  
 - Start a command prompt and cd into your Python installation directory: e.g. `cd c:\python27`  
 - Install requirements using `Scripts\pip.exe install -r \path\to\mattermost_integration_rss\requirements.txt`  
