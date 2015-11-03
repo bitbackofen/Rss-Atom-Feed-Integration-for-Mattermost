@@ -32,7 +32,7 @@ class RssFeed:
         h.ignore_links = True
         self.Description = h.handle(self.Description)
         if self.ShowName == True:
-            text += self.Name + '\n'
+            text += "_" + self.Name + '_\n'
         if self.ShowTitle == True:
             text += '*' + self.NewTitle + + '*\n'
         if self.ShowDescription == True:
