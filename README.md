@@ -79,9 +79,12 @@ This integration also works with Microsoft Windows:
 1. cd into your mattermost_integration_rss directory:  
     `cd /path/to/mattermost_integration_rss`
 2. Stop feedfetcher:  
-    `python ./feedfetcher.py stop` 
+    `sudo supervisorctl`  
+    `supervisor> stop mattermost_integration_rss`  
+    Exit supervisor (CRTL-c)
 2. Update mattermost_integration_rss  
     `git pull origin master`
 3. Have a look at `settings.py.sample` for changes.
 4. Start the feedfetcher:  
-    `python ./feedfetcher.py start`
+    `sudo supervisorctl`  
+    `supervisor> start mattermost_integration_rss`
