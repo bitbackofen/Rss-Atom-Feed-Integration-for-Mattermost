@@ -34,7 +34,7 @@ Here's how to start:
     4. Install **pip** and **git**:  
         `sudo apt-get install python-pip supervisor git python-virtualenv`
     5. Clone this GitHub repository:  
-        `git clone https://gitlab.com/m-busche/mattermost_integration_rss.git`  
+        `git clone https://github.com/bitbackofen/mattermost_integration_rss.git`  
         `cd mattermost_integration_rss`
     6. Copy sample file `settings.py.sample`:  
         `cp settings.py.sample settings.py`
