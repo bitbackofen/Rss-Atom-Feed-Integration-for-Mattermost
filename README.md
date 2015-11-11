@@ -84,7 +84,6 @@ This integration also works with Microsoft Windows:
     Exit supervisor (CRTL-c)
 2. Update mattermost_integration_rss  
     `git pull origin master`
-    `chmod +x feedfetcher.py`  
 3. Have a look at `settings.py.sample` for changes.
 4. Start the feedfetcher:  
     `sudo supervisorctl`  
