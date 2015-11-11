@@ -19,6 +19,7 @@ except ImportError as exc:
 mattermost_webhook_url = settings.mattermost_webhook_url
 delay_between_pulls = settings.delay_between_pulls
 verify_cert = settings.verify_cert
+silent_mode = settings.silent_mode
 feeds = settings.feeds
 
 
@@ -55,10 +56,11 @@ if __name__ == "__main__":
                 feed.ArticleUrl = d['entries'][0]['link']
                 feed.Description = d['entries'][0]['description']
                 if feed.LastTitle != feed.NewTitle:
-                    logging.debug('Feed url: ' + feed.Url)
-                    logging.debug('Title: ' + feed.NewTitle + '\n')
-                    logging.debug('Link: ' + feed.ArticleUrl + '\n')
-                    logging.debug('Posted text: ' + feed.jointext())
+                    if silent_mode Is False:
+                        logging.debug('Feed url: ' + feed.Url)
+                        logging.debug('Title: ' + feed.NewTitle + '\n')
+                        logging.debug('Link: ' + feed.ArticleUrl + '\n')
+                        logging.debug('Posted text: ' + feed.jointext())
                     post_text(feed.jointext(), feed.User, feed.Channel)
                     feed.LastTitle = feed.NewTitle
                 else:

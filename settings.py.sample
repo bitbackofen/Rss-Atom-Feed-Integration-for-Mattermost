@@ -11,7 +11,8 @@ mattermost_webhook_url = 'https://<your-mattermost-webhook-URL>'
 delay_between_pulls = 60 * 5
 # Trust only signed SSL certificate?
 verify_cert = False
-
+# Deactivate logging for debug purposes
+silent_mode = True
 # Your feeds come here:
 # RssFeed('Feed name', 'Feed URL', 'Mattermost username', 'Mattermost channel',
 # show name, show title, show description, show url)
