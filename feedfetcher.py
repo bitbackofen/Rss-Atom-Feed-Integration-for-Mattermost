@@ -64,7 +64,8 @@ if __name__ == "__main__":
                     post_text(feed.jointext(), feed.User, feed.Channel)
                     feed.LastTitle = feed.NewTitle
                 else:
-                    logging.debug('Nothing new. Waiting for good news...')
+                    if silent_mode Is False:
+                        logging.debug('Nothing new. Waiting for good news...')
             except:
                 logging.critical('Error fetching feed.')
                 continue
