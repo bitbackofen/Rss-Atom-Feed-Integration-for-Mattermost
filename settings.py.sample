@@ -26,14 +26,15 @@ silent_mode = True
 # Set to False it if a feed doesnt´t work.
 # Hint: Channel overriding seems not to work with the channel 'Town Square'
 feeds = (RssFeed('Heise News', 'http://heise.de.feedsportal.com/c/35207/f/653902/index.rss',
-                 'http://elpatron.cepheus.uberspace.de/rss/rss3.png', 'RSS-Bot', 'testing',
+                 'http://elpatron.cepheus.uberspace.de/rss/rss3.png', 'RSS-Bot', 'rss-test',
                  True, True, True, True),
          RssFeed('t3n', 'https://feeds2.feedburner.com/aktuell/feeds/rss/',
-                 'http://elpatron.cepheus.uberspace.de/rss/rss3.png', 'RSS-Bot', 'testing',
+                 'http://elpatron.cepheus.uberspace.de/rss/rss3.png', 'RSS-Bot', 'rss-test',
                  True, True, False, True),
-         RssFeed('Toms Hardware', 'http://www.tomshardware.com/articles.xml', '', 'RSS-Bot', 'testing',
+         RssFeed('Toms Hardware', 'http://www.tomshardware.com/articles.xml', '', 'RSS-Bot', 'rss-test',
                  True, True, True, True),
          RssFeed('Mattermost Forum', 'http://forum.mattermost.org/latest.rss',
-                 'http://www.mattermost.org/wp-content/uploads/2015/08/logomark.png', 'RSS-Bot', 'testing',
-                 True, True, True, True))
+                 'http://www.mattermost.org/wp-content/uploads/2015/08/logomark.png', 'RSS-Bot', 'rss-test',
+                 True, True, True, True)
+         )
 
