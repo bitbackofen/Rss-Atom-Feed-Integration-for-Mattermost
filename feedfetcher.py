@@ -23,7 +23,7 @@ silent_mode = settings.silent_mode
 feeds = settings.feeds
 
 
-def post_text(text, username, channel):
+def post_text(text, username, channel, iconurl):
     """
     Mattermost POST method, posts text to the Mattermost incoming webhook URL
     """
@@ -33,6 +33,8 @@ def post_text(text, username, channel):
         data['username'] = username
     if len(channel) > 0:
         data['channel'] = channel
+    if len(iconurl) > 0:
+        data['icon_url'] = iconurl
 
     headers = {'Content-Type': 'application/json'}
     r = requests.post(mattermost_webhook_url, headers=headers, data=json.dumps(data), verify=verify_cert)
@@ -56,15 +58,15 @@ if __name__ == "__main__":
                 feed.ArticleUrl = d['entries'][0]['link']
                 feed.Description = d['entries'][0]['description']
                 if feed.LastTitle != feed.NewTitle:
-                    if silent_mode Is False:
+                    if not silent_mode:
                         logging.debug('Feed url: ' + feed.Url)
                         logging.debug('Title: ' + feed.NewTitle + '\n')
                         logging.debug('Link: ' + feed.ArticleUrl + '\n')
                         logging.debug('Posted text: ' + feed.jointext())
-                    post_text(feed.jointext(), feed.User, feed.Channel)
+                    post_text(feed.jointext(), feed.User, feed.Channel, feed.Iconurl)
                     feed.LastTitle = feed.NewTitle
                 else:
-                    if silent_mode Is False:
+                    if not silent_mode:
                         logging.debug('Nothing new. Waiting for good news...')
             except:
                 logging.critical('Error fetching feed.')
