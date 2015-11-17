@@ -34,8 +34,8 @@ Here's how to start:
     4. Install **pip** and **git**:  
         `sudo apt-get install python-pip supervisor git python-virtualenv`
     5. Clone this GitHub repository:  
-        `git clone https://github.com/bitbackofen/mattermost_integration_rss.git`  
-        `cd mattermost_integration_rss`
+        `git clone https://github.com/bitbackofen/Rss-Atom-Feed-Integration-for-Mattermost.git`  
+        `cd Rss-Atom-Feed-Integration-for-Mattermost`
     6. Copy sample file `settings.py.sample`:  
         `cp settings.py.sample settings.py`
     7. Edit `settings.py` to suit your requirements:  
@@ -54,8 +54,8 @@ Here's how to start:
     10. a) Start feedfetcher with nuhup:    
         `nohup ./env/bin/python ./feedfetcher.py &`  
         b) Alternatively: Start feedfetcher with Supervisor:  
-          - `sudo cp mattermost_integration_rss.conf.sample /etc/supervisor/conf.d/mattermost_integration_rss.conf`  
-          - Edit the supervisor configuration file: `sudo nano /etc/supervisor/conf.d/mattermost_integration_rss.conf`
+          - `sudo cp Rss-Atom-Feed-Integration-for-Mattermost.conf.sample /etc/supervisor/conf.d/mRss-Atom-Feed-Integration-for-Mattermost.conf`  
+          - Edit the supervisor configuration file: `sudo nano /etc/supervisor/conf.d/Rss-Atom-Feed-Integration-for-Mattermost.conf`
           and change paths in `command=` and `directory=` to suit your environment.  
           - Tell Supervisor to look for any new or changed program configurations:  
           `sudo supervisorctl reread`

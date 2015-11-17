@@ -1,7 +1,0 @@
-[program:mattermost_integration_rss]
-command=/path/to/mattermost_integration_rss/env/bin/python /path/to/mattermost_integration_rss/feedfetcher.py
-directory=/path/to/mattermost_integration_rss/
-autostart=true
-autorestart=true
-stderr_logfile=/var/log/mattermost_intergration_rss.err.log
-stdout_logfile=/var/log/mattermost_intergration_rss.out.log
