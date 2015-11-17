@@ -77,7 +77,7 @@ This integration also works with Microsoft Windows:
 
 ## Linux/Ubuntu 14.04 Update
 1. cd into your mattermost_integration_rss directory:  
-    `cd /path/to/mattermost_integration_rss`
+    `cd /path/to/Rss-Atom-Feed-Integration-for-Mattermost`
 2. Stop feedfetcher:  
     `sudo supervisorctl`  
     `supervisor> stop Rss-Atom-Feed-Integration-for-Mattermost`  
