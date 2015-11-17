@@ -67,11 +67,11 @@ Here's how to start:
 ## Microsoft Windows Install
 This integration also works with Microsoft Windows:  
 - Download Python 2.7 from [Python.org](https://www.python.org/downloads/) and install it  
-- Download mattermost_integration_rss from [Github](https://github.com/bitbackofen/mattermost_integration_rss/archive/master.zip) or get it using `git clone https://github.com/bitbackofen/mattermost_integration_rss.git`  
+- Download mattermost_integration_rss from [Github](https://github.com/bitbackofen/Rss-Atom-Feed-Integration-for-Mattermost/archive/master.zip) or get it using `git clone https://github.com/bitbackofen/Rss-Atom-Feed-Integration-for-Mattermost.git`  
 - Extract the archive to a directory of your choice if you downloaded archive.zip.  
 - Start a command prompt and cd into your Python installation directory: e.g. `cd c:\python27`  
-- Install requirements using `Scripts\pip.exe install -r \path\to\mattermost_integration_rss\requirements.txt`  
-- `cd \path\to\mattermost_integration_rss\`  
+- Install requirements using `Scripts\pip.exe install -r \path\to\Rss-Atom-Feed-Integration-for-Mattermost\requirements.txt`  
+- `cd \path\to\Rss-Atom-Feed-Integration-for-Mattermost\`  
 - Start the Script:  
   `C:\Python27\python.exe feedfetcher.py` (change `C:\Python27\` if you installed Python elsewhere).  
 
