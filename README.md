@@ -80,11 +80,11 @@ This integration also works with Microsoft Windows:
     `cd /path/to/mattermost_integration_rss`
 2. Stop feedfetcher:  
     `sudo supervisorctl`  
-    `supervisor> stop mattermost_integration_rss`  
+    `supervisor> stop Rss-Atom-Feed-Integration-for-Mattermost`  
     Exit supervisor (CRTL-c)
 2. Update mattermost_integration_rss  
     `git pull origin master`
 3. Have a look at `settings.py.sample` for changes.
 4. Start the feedfetcher:  
     `sudo supervisorctl`  
-    `supervisor> start mattermost_integration_rss`
+    `supervisor> start Rss-Atom-Feed-Integration-for-Mattermost`
