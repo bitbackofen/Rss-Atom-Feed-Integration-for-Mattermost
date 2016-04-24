@@ -45,7 +45,8 @@ def post_text(text, username, channel, iconurl):
 
 
 if __name__ == "__main__":
-    logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
+    FORMAT = '%(asctime)-15s - %(message)s'
+    logging.basicConfig(stream=sys.stderr, level=logging.DEBUG, format=FORMAT)
     if len(mattermost_webhook_url) == 0:
         print('mattermost_webhook_url must be configured. Please see instructions in README.md')
         sys.exit()
@@ -68,8 +69,9 @@ if __name__ == "__main__":
                 else:
                     if not silent_mode:
                         logging.debug('Nothing new. Waiting for good news...')
-            except:
-                logging.critical('Error fetching feed.')
-                continue
+                except Exception as e:
+                    logging.critical('Error fetching feed ' + feed.Url)
+                    logging.exception(e)
+                    continue
 
         time.sleep(delay_between_pulls)
