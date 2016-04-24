@@ -8,6 +8,7 @@ import time
 import sys
 import logging
 import settings
+import ssl
 try:
     import feedparser
     import requests
@@ -22,6 +23,8 @@ verify_cert = settings.verify_cert
 silent_mode = settings.silent_mode
 feeds = settings.feeds
 
+if (not verify_cert) and hasattr(ssl, '_create_unverified_context'):
+    ssl._create_default_https_context = ssl._create_unverified_context
 
 def post_text(text, username, channel, iconurl):
     """
@@ -45,7 +48,8 @@ def post_text(text, username, channel, iconurl):
 
 
 if __name__ == "__main__":
-    logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
+    FORMAT = '%(asctime)-15s - %(message)s'
+    logging.basicConfig(stream=sys.stderr, level=logging.DEBUG, format=FORMAT)
     if len(mattermost_webhook_url) == 0:
         print('mattermost_webhook_url must be configured. Please see instructions in README.md')
         sys.exit()
@@ -68,8 +72,9 @@ if __name__ == "__main__":
                 else:
                     if not silent_mode:
                         logging.debug('Nothing new. Waiting for good news...')
-            except:
-                logging.critical('Error fetching feed.')
+            except Exception as e:
+                logging.critical('Error fetching feed ' + feed.Url)
+                logging.exception(e)
                 continue
 
         time.sleep(delay_between_pulls)
