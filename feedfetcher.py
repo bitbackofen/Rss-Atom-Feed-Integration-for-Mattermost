@@ -8,6 +8,7 @@ import time
 import sys
 import logging
 import settings
+import ssl
 try:
     import feedparser
     import requests
@@ -22,6 +23,8 @@ verify_cert = settings.verify_cert
 silent_mode = settings.silent_mode
 feeds = settings.feeds
 
+if (not verify_cert) and hasattr(ssl, '_create_unverified_context'):
+    ssl._create_default_https_context = ssl._create_unverified_context
 
 def post_text(text, username, channel, iconurl):
     """
