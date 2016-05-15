@@ -64,17 +64,16 @@ if __name__ == "__main__":
                 if feed.LastTitle != feed.NewTitle:
                     if not silent_mode:
                         logging.debug('Feed url: ' + feed.Url)
-                        logging.debug('Title: ' + feed.NewTitle + '\n')
-                        logging.debug('Link: ' + feed.ArticleUrl + '\n')
+                        logging.debug('Title: ' + feed.NewTitle)
+                        logging.debug('Link: ' + feed.ArticleUrl)
                         logging.debug('Posted text: ' + feed.jointext())
                     post_text(feed.jointext(), feed.User, feed.Channel, feed.Iconurl)
                     feed.LastTitle = feed.NewTitle
                 else:
                     if not silent_mode:
                         logging.debug('Nothing new. Waiting for good news...')
-            except Exception as e:
+            except e:
                 logging.critical('Error fetching feed ' + feed.Url)
                 logging.exception(e)
-                continue
 
         time.sleep(delay_between_pulls)
