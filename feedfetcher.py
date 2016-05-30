@@ -72,8 +72,8 @@ if __name__ == "__main__":
                 else:
                     if not silent_mode:
                         logging.debug('Nothing new. Waiting for good news...')
-            except e:
+            except:
                 logging.critical('Error fetching feed ' + feed.Url)
-                logging.exception(e)
+                logging.exception(sys.exc_info()[0])
 
         time.sleep(delay_between_pulls)
