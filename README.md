@@ -64,6 +64,39 @@ Here's how to start:
         Refer to [this tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-and-manage-supervisor-on-ubuntu-and-debian-vps)
         for more information about Supervisor.  
 
+## SystemD Setup (instead of supervisor)
+
+This config assumes that the feed fetcher will run on the same computer as mattermost as well as that a own user/group called rss was created for feedfetcher.
+
+Place the following config under `/etc/systemd/system/rss_atom_feed_integration_for_mattermost.service`:
+
+~~~
+[Unit]
+Description=RSS integration for mattermost
+After=syslog.target network.target mattermost.service
+
+[Service]
+Type=simple
+User=rss
+Group=rss
+ExecStart=/home/rss/Rss-Atom-Feed-Integration-for-Mattermost/env/bin/python /home/rss/Rss-Atom-Feed-Integration-for-Mattermost/feedfetcher.py
+PrivateTmp=yes
+WorkingDirectory=/home/rss/Rss-Atom-Feed-Integration-for-Mattermost/
+Restart=always
+RestartSec=30
+
+[Install]
+WantedBy=multi-user.target
+~~~
+
+Please note:
+
+* Remove `mattermost.service` from `After` if the fetcher was installed on a different computer than mattermost
+* change `User` and `Group` to the user and group that the fetcher should run under
+* change `ExecStart` and `WorkingDirectory` to the actual installation paths
+
+Now you can start the fetcher with `systemctl start rss_atom_feed_integration_for_mattermost.service` to enable auto-start on boot type `systemctl enable rss_atom_feed_integration_for_mattermost.service`
+
 ## Microsoft Windows Install
 This integration also works with Microsoft Windows:  
 - Download Python 2.7 from [Python.org](https://www.python.org/downloads/) and install it  
