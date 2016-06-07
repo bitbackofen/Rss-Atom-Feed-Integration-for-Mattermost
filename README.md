@@ -51,7 +51,7 @@ Here's how to start:
         `./env/bin/python ./feedfetcher.py`  
         You should see your feeds scrolling through. Check your configured Mattermost channel for the new feeds.  
         If everything works fine:
-    10. a) Start feedfetcher with nuhup:    
+    10. a) Start feedfetcher with **nohup**:    
         `nohup ./env/bin/python ./feedfetcher.py &`  
         b) Alternatively: Start feedfetcher with Supervisor:  
           - `sudo cp Rss-Atom-Feed-Integration-for-Mattermost.conf.sample /etc/supervisor/conf.d/mRss-Atom-Feed-Integration-for-Mattermost.conf`  
