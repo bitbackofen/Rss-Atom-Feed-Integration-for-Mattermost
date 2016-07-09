@@ -3,6 +3,8 @@
 This integration service posts RSS feeds into specific Mattermost channels by formatting output from html to text 
 via [Mattermost's incoming webhooks](https://github.com/mattermost/platform/blob/master/doc/integrations/webhooks/Incoming-Webhooks.md).
 
+<img src="https://github.com/bitbackofen/Rss-Atom-Feed-Integration-for-Mattermost/blob/master/Rss-Atom-Feed-Integration-for-Mattermost.png" width="250">
+
 ## Requirements
 
 To run this integration you need:
