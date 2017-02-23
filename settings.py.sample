@@ -17,6 +17,9 @@ verify_cert = False
 # Deactivate logging for debug purposes
 silent_mode = True
 
+# Don't publish the article fetched on the first run (avoid spamming when rebooting a lot the bot)
+skip_init_article = True
+
 # Your feeds come here:
 # RssFeed('Feed name', 'Feed URL', 'Image URL', 'Mattermost username', 'Mattermost channel',
 # show name, show title, show description, show url)

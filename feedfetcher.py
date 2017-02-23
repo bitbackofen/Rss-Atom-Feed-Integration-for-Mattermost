@@ -61,7 +61,11 @@ if __name__ == "__main__":
                 feed.NewTitle = d['entries'][0]['title']
                 feed.ArticleUrl = d['entries'][0]['link']
                 feed.Description = d['entries'][0]['description']
-                if feed.LastTitle != feed.NewTitle:
+                if settings.skip_init_article and len(feed.LastTitle) <= 0:
+                    if not silent_mode:
+                        logging.debug('Initializing feed: ' + feed.Name + '. Skipping the last news: ' + feed.NewTitle)
+                    feed.LastTitle = feed.NewTitle
+                elif feed.LastTitle != feed.NewTitle:
                     if not silent_mode:
                         logging.debug('Feed url: ' + feed.Url)
                         logging.debug('Title: ' + feed.NewTitle)
