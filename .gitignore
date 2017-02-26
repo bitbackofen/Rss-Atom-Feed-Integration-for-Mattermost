@@ -1,2 +1,5 @@
 /.idea
 /__pycache__
+/docker-compose.yml
+/feeds.env
+/*.pyc

@@ -1,0 +1,6 @@
+# Send nothing to the building daemon, except the py-files, the requirements
+# and the docker-settings file.
+*
+!*.py
+!requirements.txt
+!*.docker

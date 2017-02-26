@@ -1,0 +1,37 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+from os import environ
+from rssfeed import RssFeed
+
+# Paste the Mattermost webhook URL you created here
+# See also: https://github.com/mattermost/platform/blob/master/doc/integrations/webhooks/Incoming-Webhooks.md
+mattermost_webhook_url = environ['MATTERMOST_HOOK_URL']
+
+# Set the delay between feed pulls to your needs. 5 minutes should be okay.
+delay_between_pulls = environ.get('RSS_DELAY_PULL', 60 * 5)
+
+# Trust only signed SSL certificate?
+verify_cert = environ.get('RSS_VERIFY_SSL_CERT', False)
+
+# Deactivate logging for debug purposes
+silent_mode = environ.get('RSS_SILENT_MODE', True)
+
+# Your feeds come here:
+# RssFeed('Feed name', 'Feed URL', 'Image URL', 'Mattermost username', 'Mattermost channel',
+# show name, show title, show description, show url)
+#
+# show name, show title, show description, show url can be True or False; at least one of them should be True
+# show description (longer text or full article) seems not to work with every feed.
+# Set to False it if a feed doesnt´t work.
+# Hint: Channel overriding seems not to work with the channel 'Town Square'
+feeds = [RssFeed(
+                k.replace('RSS_FEED_', ''), 
+                v.partition(';')[0], 
+                v.partition(';')[2], 
+                environ.get('MATTERMOST_USERNAME', k.replace('RSS_FEED_', '')),
+                environ['MATTERMOST_CHANNEL'],
+                environ.get('RSS_SHOW_NAME', True),
+                environ.get('RSS_SHOW_TITLE', True),
+                environ.get('RSS_SHOW_DESCR', True),
+                environ.get('RSS_SHOW_URL', True)) 
+        for k,v in environ.iteritems() if k.startswith('RSS_FEED_')]
