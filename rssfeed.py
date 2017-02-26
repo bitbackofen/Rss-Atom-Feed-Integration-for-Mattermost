@@ -41,3 +41,15 @@ class RssFeed:
         if self.ShowUrl == True:
             text += self.ArticleUrl
         return text
+
+    def env_definition(self):
+        text = '\nRSS_FEED_' + self.Name
+        text += '=\'' + self.Url
+        text += ';' + self.Iconurl
+        text += ';' + self.Channel
+        text += ';' + str(self.ShowName)
+        text += ';' + str(self.ShowTitle)
+        text += ';' + str(self.ShowDescription)
+        text += ';' + str(self.ShowUrl)
+        text += '\''
+        return text

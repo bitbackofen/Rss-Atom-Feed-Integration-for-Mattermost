@@ -5,8 +5,12 @@ __author__ = 'elpatron@mailbox.org'
 from rssfeed import RssFeed
 
 # Paste the Mattermost webhook URL you created here
-# See also: https://github.com/mattermost/platform/blob/master/doc/integrations/webhooks/Incoming-Webhooks.md
+# See also: https://docs.mattermost.com/developer/webhooks-incoming.html
 mattermost_webhook_url = 'https://<your-mattermost-webhook-URL>'
+
+# Paste the Mattermost integration Token you created here
+# See also: https://docs.mattermost.com/developer/slash-commands.html
+mattermost_integration_token = ''
 
 # Set the delay between feed pulls to your needs. 5 minutes should be okay.
 delay_between_pulls = 60 * 5
@@ -17,8 +21,27 @@ verify_cert = False
 # Deactivate logging for debug purposes
 silent_mode = True
 
+# Name of the user that responds to integration commands
+integration_bot_name = 'RSS-Bot'
+
+# Image URL for the user that responds to integration commands
+integration_bot_img = ''
+
+# Address integration bot must listen to ('' for every host)
+integration_listening_addr = ''
+
+# Port integration bot must listen to
+integration_listening_port = 80
+
 # Don't publish the article fetched on the first run (avoid spamming when rebooting a lot the bot)
 skip_init_article = True
+
+# Default settings for the feeds
+default_show_name = True
+default_show_title = True
+default_show_description = True
+default_show_url = True
+default_channel = ''
 
 # Your feeds come here:
 # RssFeed('Feed name', 'Feed URL', 'Image URL', 'Mattermost username', 'Mattermost channel',
@@ -40,4 +63,3 @@ feeds = [RssFeed('Heise News', 'http://heise.de.feedsportal.com/c/35207/f/653902
                  'http://www.mattermost.org/wp-content/uploads/2015/08/logomark.png', 'RSS-Bot', 'rss-test',
                  True, True, True, True)
          ]
-
