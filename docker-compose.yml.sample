@@ -1,0 +1,12 @@
+version: '2'
+services:
+  mattermost-rss:
+    build: .
+    environment:
+      MATTERMOST_HOOK_URL: 'https://<your-mattermost-webhook-URL>'
+      RSS_SILENT_MODE: 'True'
+      RSS_SHOW_NAME: 'False'
+      RSS_SHOW_URL: 'False'
+      MATTERMOST_CHANNEL: 'rss-stream'
+    env_file:
+      - feeds.env
