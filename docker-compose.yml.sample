@@ -4,9 +4,18 @@ services:
     build: .
     environment:
       MATTERMOST_HOOK_URL: 'https://<your-mattermost-webhook-URL>'
+      MATTERMOST_CMD_TOKEN: '<your-slash-command-token>'
       RSS_SILENT_MODE: 'True'
       RSS_SHOW_NAME: 'False'
+      RSS_SHOW_TITLE: 'True'
+      RSS_SHOW_DESCR: 'True'
       RSS_SHOW_URL: 'False'
+      RSS_VERIFY_SSL_CERT: 'False'
+      RSS_SKIP_INIT_ARTICLE: 'False'
+      INTEGRATION_BOT_NAME: 'RSS-Bot'
+      INTEGRATION_BOT_IMG: ''
+      INTEGRATION_LISTENING_ADDR: ''
+      INTEGRATION_LISTENING_PORT: '8080'
       MATTERMOST_CHANNEL: 'rss-stream'
     env_file:
       - feeds.env
