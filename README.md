@@ -11,7 +11,7 @@ To run this integration you need:
 
 1. A **network connected device running python** like Raspberry Pi or any other Linux device which supports python and the required packages or **running Docker**
 2. A **[Mattermost account](http://www.mattermost.org/)** where [incoming webhooks are enabled](https://docs.mattermost.com/developer/webhooks-incoming.html) and
-optionally [slash-commands enabled](ttps://docs.mattermost.com/developer/slash-commands.html)
+optionally [slash-commands enabled](https://docs.mattermost.com/developer/slash-commands.html)
 
 ## Linux/Ubuntu 14.04 Install
 
