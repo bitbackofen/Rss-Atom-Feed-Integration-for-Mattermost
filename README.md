@@ -132,7 +132,7 @@ This integration also works with Microsoft Windows:
     `sudo supervisorctl`  
     `supervisor> start Rss-Atom-Feed-Integration-for-Mattermost`
 
-## Docker deploiement
+## Docker deployment
 
 This integration is also available as a Docker image.
 
