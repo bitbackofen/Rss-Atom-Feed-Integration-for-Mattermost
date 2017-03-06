@@ -1,7 +1,7 @@
 # RSS- and Atom-Feed Integration Service for Mattermost
 
-This integration service posts RSS feeds into specific Mattermost channels by formatting output from html to text 
-via [Mattermost's incoming webhooks](https://github.com/mattermost/platform/blob/master/doc/integrations/webhooks/Incoming-Webhooks.md).
+This integration service posts RSS feeds into specific Mattermost channels by formatting output from html to text
+via [Mattermost's incoming webhooks](https://docs.mattermost.com/developer/webhooks-incoming.html). It can also be managed through [slash-commands](https://docs.mattermost.com/developer/slash-commands.html).
 
 <img src="https://github.com/bitbackofen/Rss-Atom-Feed-Integration-for-Mattermost/blob/master/Rss-Atom-Feed-Integration-for-Mattermost.png" width="250">
 
@@ -9,16 +9,17 @@ via [Mattermost's incoming webhooks](https://github.com/mattermost/platform/blob
 
 To run this integration you need:
 
-1. A **network connected device running python** like Raspberry Pi or any other Linux device which supports python and the required packages
-2. A **[Mattermost account](http://www.mattermost.org/)** where [incoming webhooks are enabled](https://github.com/mattermost/platform/blob/master/doc/integrations/webhooks/Incoming-Webhooks.md#enabling-incoming-webhooks)
+1. A **network connected device running python** like Raspberry Pi or any other Linux device which supports python and the required packages or **running Docker**
+2. A **[Mattermost account](http://www.mattermost.org/)** where [incoming webhooks are enabled](https://docs.mattermost.com/developer/webhooks-incoming.html) and
+optionally [slash-commands enabled](https://docs.mattermost.com/developer/slash-commands.html)
 
 ## Linux/Ubuntu 14.04 Install
 
-The following procedure shows how to install this project on a Linux device running Ubuntu 14.04. 
-The following instructions work behind a firewall as long as the device has access to your Mattermost instance. 
+The following procedure shows how to install this project on a Linux device running Ubuntu 14.04.
+The following instructions work behind a firewall as long as the device has access to your Mattermost instance.
 
-To install this project using a Linux-based device, you will need Python 2.7 or a compatible version. 
-Other compatible operating systems and Python versions should also work. 
+To install this project using a Linux-based device, you will need Python 2.7 or a compatible version.
+Other compatible operating systems and Python versions should also work.
 
 Here's how to start:
 
@@ -28,7 +29,14 @@ Here's how to start:
     2. Under **Add a new incoming webhook** select the channel in which you want Feed notifications to appear, then click **Add** to create a new entry.
     3. Copy the contents next to **URL** of the new webhook you just created (we'll refer to this as `https://<your-mattermost-webhook-URL>`).
 
-2. **Set up this project to run on your Linux device**
+2. **Set up a new slash-commands on your Mattermost instance to manage the feeds**
+    1. In the Integrations Menu, go to **Slash Commands**.
+    2. Under **Add a new slash command**, enter the name of your command, a description and the word to trigger the command. The **Request URL** is simply the address to reach the machine where the project run. The default port is `8080` but is overriden by `integration_listening_port`.  
+    You can optionally opt-in for **Autocompletion**, and use this value :  
+      `/rss-bot list | add <Feed Name> <Feed URL> [<Image URL>] [<Show Name>] [<Show Title>] [<Show Description>] [<Show URL>] | remove <Feed Name>`
+    3. Click **Add** to create the new command and copy the **Token** value for the command you just created. We'll refer to it as `<your-slash-command-token>`.
+
+3. **Set up this project to run on your Linux device**
     1. Set up a **Linux Ubuntu 14.04** server either on your own machine or on a hosted service, like AWS.
     2. **SSH** into the machine, or just open your terminal if you're installing locally.
     3. Confirm **Python 2.7** or a compatible version is installed by running:  
@@ -123,3 +131,21 @@ This integration also works with Microsoft Windows:
 4. Start the feedfetcher:  
     `sudo supervisorctl`  
     `supervisor> start Rss-Atom-Feed-Integration-for-Mattermost`
+
+## Docker deployment
+
+This integration is also available as a Docker image.
+
+1. Set up any box with **Docker** on it or access to a remote **Docker Host**.
+2. Clone this GitHub repository:  
+`git clone https://github.com/bitbackofen/Rss-Atom-Feed-Integration-for-Mattermost.git`  
+`cd Rss-Atom-Feed-Integration-for-Mattermost`
+3. Copy sample Compose and Feeds files:  
+`cp docker-compose.yml.sample docker-compose.yml`  
+`cp feeds.env.sample feeds.env`
+4. Edit the environment variables of `docker-compose.yml` to suit your needs. If a variable is omitted, the default value is used (except for `MATTERMOST_HOOK_URL` and `MATTERMOST_CMD_TOKEN`)
+5. Complete `feeds.env` with the desired RSS feeds
+6. Spin up the container with `docker-compose up`  
+You should see your feeds scrolling through. Check your configured Mattermost channel for the new feeds.
+If everything works fine:  
+7. Start the container with `docker-compose up -d`
