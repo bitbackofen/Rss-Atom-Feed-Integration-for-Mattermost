@@ -131,7 +131,8 @@ def fetching_feed(feed):
         d = feedparser.parse(feed.Url)
         feed.NewTitle = d['entries'][0]['title']
         feed.ArticleUrl = d['entries'][0]['link']
-        feed.Description = d['entries'][0]['description']
+        if feed.ShowDescription == True:
+            feed.Description = d['entries'][0]['description']
         if settings.skip_init_article and len(feed.LastTitle) <= 0:
             if not silent_mode:
                 logging.debug('Initializing feed: ' + feed.Name + '. Skipping the last news: ' + feed.NewTitle)
