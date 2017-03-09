@@ -2,45 +2,48 @@
 # -*- coding: utf-8 -*-
 from os import environ
 from rssfeed import RssFeed
+from environs import Env
+
+env = Env()
 
 # Paste the Mattermost webhook URL you created here
 # See also: https://github.com/mattermost/platform/blob/master/doc/integrations/webhooks/Incoming-Webhooks.md
-mattermost_webhook_url = environ['MATTERMOST_HOOK_URL']
+mattermost_webhook_url = env.str('MATTERMOST_HOOK_URL')
 
 # Paste the Mattermost integration Token you created here
 # See also: https://docs.mattermost.com/developer/slash-commands.html
-mattermost_integration_token = environ.get('MATTERMOST_CMD_TOKEN' ,'')
+mattermost_integration_token = env.str('MATTERMOST_CMD_TOKEN' ,'')
 
 # Set the delay between feed pulls to your needs. 5 minutes should be okay.
-delay_between_pulls = environ.get('RSS_DELAY_PULL', 60 * 5)
+delay_between_pulls = env.int('RSS_DELAY_PULL', 60 * 5)
 
 # Trust only signed SSL certificate?
-verify_cert = environ.get('RSS_VERIFY_SSL_CERT', False)
+verify_cert = env.bool('RSS_VERIFY_SSL_CERT', False)
 
 # Deactivate logging for debug purposes
-silent_mode = environ.get('RSS_SILENT_MODE', True)
+silent_mode = env.bool('RSS_SILENT_MODE', True)
 
 # Name of the user that responds to integration commands
-integration_bot_name = environ.get('INTEGRATION_BOT_NAME', 'RSS-Bot')
+integration_bot_name = env.str('INTEGRATION_BOT_NAME', 'RSS-Bot')
 
 # Image URL for the user that responds to integration commands
-integration_bot_img = environ.get('INTEGRATION_BOT_IMG', '')
+integration_bot_img = env.str('INTEGRATION_BOT_IMG', '')
 
 # Address integration bot must listen to ('' for every host)
-integration_listening_addr = environ.get('INTEGRATION_LISTENING_ADDR', '')
+integration_listening_addr = env.str('INTEGRATION_LISTENING_ADDR', '')
 
 # Port integration bot must listen to
-integration_listening_port = environ.get('INTEGRATION_LISTENING_PORT', 8080)
+integration_listening_port = env.int('INTEGRATION_LISTENING_PORT', 8080)
 
 # Don't publish the article fetched on the first run (avoid spamming when rebooting a lot the bot)
-skip_init_article = environ.get('RSS_SKIP_INIT_ARTICLE', True)
+skip_init_article = env.bool('RSS_SKIP_INIT_ARTICLE', True)
 
 # Default settings for the feeds
-default_show_name = environ.get('RSS_SHOW_NAME', True)
-default_show_title = environ.get('RSS_SHOW_TITLE', True)
-default_show_description = environ.get('RSS_SHOW_DESCR', True)
-default_show_url = environ.get('RSS_SHOW_URL', True)
-default_channel = environ['MATTERMOST_CHANNEL']
+default_show_name = env.bool('RSS_SHOW_NAME', True)
+default_show_title = env.bool('RSS_SHOW_TITLE', True)
+default_show_description = env.bool('RSS_SHOW_DESCR', True)
+default_show_url = env.bool('RSS_SHOW_URL', True)
+default_channel = env.str('MATTERMOST_CHANNEL')
 
 # Your feeds come here:
 # RssFeed('Feed name', 'Feed URL', 'Image URL', 'Mattermost username', 'Mattermost channel',
@@ -54,10 +57,10 @@ feeds = [RssFeed(
                 k.replace('RSS_FEED_', ''),
                 v.split(';')[0],
                 v.split(';')[1] if v.count(';') >= 1 else '',
-                v.split(';')[2] if v.count(';') >= 2 else environ.get('MATTERMOST_USERNAME', k.replace('RSS_FEED_', '')),
+                v.split(';')[2] if v.count(';') >= 2 else env('MATTERMOST_USERNAME', k.replace('RSS_FEED_', '')),
                 v.split(';')[3] if v.count(';') >= 3 else default_channel,
-                v.split(';')[4] if v.count(';') >= 4 else default_show_name,
-                v.split(';')[5] if v.count(';') >= 5 else default_show_title,
-                v.split(';')[6] if v.count(';') >= 6 else default_show_description,
-                v.split(';')[7] if v.count(';') >= 7 else default_show_url)
+                v.split(';')[4] == 'True' if v.count(';') >= 4 else default_show_name,
+                v.split(';')[5] == 'True' if v.count(';') >= 5 else default_show_title,
+                v.split(';')[6] == 'True' if v.count(';') >= 6 else default_show_description,
+                v.split(';')[7] == 'True' if v.count(';') >= 7 else default_show_url)
         for k,v in environ.iteritems() if k.startswith('RSS_FEED_')]
