@@ -129,25 +129,29 @@ class RSSManagementRequestHandler(BaseHTTPRequestHandler):
 def fetching_feed(feed):
     try:
         d = feedparser.parse(feed.Url)
-        feed.NewTitle = d['entries'][0]['title']
-        feed.ArticleUrl = d['entries'][0]['link']
-        if feed.ShowDescription == True:
-            feed.Description = d['entries'][0]['description']
-        if settings.skip_init_article and len(feed.LastTitle) <= 0:
-            if not silent_mode:
-                logging.debug('Initializing feed: ' + feed.Name + '. Skipping the last news: ' + feed.NewTitle)
-            feed.LastTitle = feed.NewTitle
-        elif feed.LastTitle != feed.NewTitle:
-            if not silent_mode:
-                logging.debug('Feed url: ' + feed.Url)
-                logging.debug('Title: ' + feed.NewTitle)
-                logging.debug('Link: ' + feed.ArticleUrl)
-                logging.debug('Posted text: ' + feed.jointext())
-            post_text(feed.jointext(), feed.User, feed.Channel, feed.Iconurl)
-            feed.LastTitle = feed.NewTitle
+        if d['entries']:
+            feed.NewTitle = d['entries'][0]['title']
+            feed.ArticleUrl = d['entries'][0]['link']
+            if feed.ShowDescription == True:
+                feed.Description = d['entries'][0]['description']
+            if settings.skip_init_article and len(feed.LastTitle) <= 0:
+                if not silent_mode:
+                    logging.debug('Initializing feed: ' + feed.Name + '. Skipping the last news: ' + feed.NewTitle)
+                feed.LastTitle = feed.NewTitle
+            elif feed.LastTitle != feed.NewTitle:
+                if not silent_mode:
+                    logging.debug('Feed url: ' + feed.Url)
+                    logging.debug('Title: ' + feed.NewTitle)
+                    logging.debug('Link: ' + feed.ArticleUrl)
+                    logging.debug('Posted text: ' + feed.jointext())
+                post_text(feed.jointext(), feed.User, feed.Channel, feed.Iconurl)
+                feed.LastTitle = feed.NewTitle
+            else:
+                if not silent_mode:
+                    logging.debug('[' + feed.Name +'] Nothing new. Waiting for good news...')
         else:
             if not silent_mode:
-                logging.debug('Nothing new. Waiting for good news...')
+                logging.debug('[' + feed.Name +'] Feed is empty. Waiting for good news...')
     except:
         logging.critical('Error fetching feed ' + feed.Url)
         logging.exception(sys.exc_info()[0])
