@@ -17,5 +17,6 @@ services:
       INTEGRATION_LISTENING_ADDR: ''
       INTEGRATION_LISTENING_PORT: '8080'
       MATTERMOST_CHANNEL: 'rss-stream'
-    env_file:
-      - feeds.env
+    volumes:
+      - feeds.env:/code/feeds.env:rw
+    user: root
