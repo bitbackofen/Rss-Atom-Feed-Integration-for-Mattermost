@@ -47,6 +47,7 @@ class RssFeed:
         text = '\nRSS_FEED_' + self.Name
         text += '=\'' + self.Url
         text += ';' + self.Iconurl
+        text += ';' + self.User
         text += ';' + self.Channel
         text += ';' + str(self.ShowName)
         text += ';' + str(self.ShowTitle)
