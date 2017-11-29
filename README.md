@@ -142,7 +142,8 @@ This integration is also available as a Docker image.
 `cd Rss-Atom-Feed-Integration-for-Mattermost`
 3. Copy sample Compose and Feeds files:  
 `cp docker-compose.yml.sample docker-compose.yml`  
-`cp feeds.env.sample feeds.env`
+`cp feeds.env.sample feeds.env`  
+`chmod 666 feeds.env`
 4. Edit the environment variables of `docker-compose.yml` to suit your needs. If a variable is omitted, the default value is used (except for `MATTERMOST_HOOK_URL` and `MATTERMOST_CMD_TOKEN`)
 5. Complete `feeds.env` with the desired RSS feeds
 6. Spin up the container with `docker-compose up`  
