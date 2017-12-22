@@ -20,4 +20,4 @@ services:
     env_file:
       - feeds.env
     volumes:
-      - feeds.env:/code/feeds.env:rw
+      - ./feeds.env:/code/feeds.env:rw
