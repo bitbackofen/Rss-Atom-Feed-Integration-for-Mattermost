@@ -1,3 +1,7 @@
+# This project is orphaned
+
+Please consider to use [Mattermost RSS Plugin](https://github.com/wbernest/mattermost-plugin-rssfeed) instead!
+
 # RSS- and Atom-Feed Integration Service for Mattermost
 
 This integration service posts RSS feeds into specific Mattermost channels by formatting output from html to text
